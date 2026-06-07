@@ -12,7 +12,7 @@ typedef struct {
 } Sqlist;
 
 int InitList(Sqlist &L){
-    L.elem=(int*)malloc(MAXSIZE*4);
+    L.elem=new int[MAXSIZE];
     if(!L.elem) exit(OVERFLOW);
     L.length=0;
     return OK;
@@ -23,11 +23,13 @@ int GetElem(Sqlist L,int i,int &e){
         exit(OVERFLOW);
     else
         e=L.elem[i];
+        return e;
 }
 
 int main(){
     Sqlist list;
     int n;
+    InitList(list);//初始化
     for(int i=0;i<n;i++)
         cin>>list.elem[i];
     int I,E=0;//I为要查询的数在线性表的位置，E为查询到的数
