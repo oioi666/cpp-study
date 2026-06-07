@@ -1,29 +1,30 @@
 #include<iostream>
 #define MAXSIZE 100
 #define OK 1
-#define ERROE 0
+#define ERROR 0
 #define OVERFLOW -2
 
 using namespace std;
 
+typedef int Status;//表示函数返回的不是普通的整数，而是是否成功的状态
 typedef struct {
     int *elem;
     int length;
-} Sqlist;
+}Sqlist;
 
-int InitList(Sqlist &L){
+Status InitList(Sqlist &L){
     L.elem=new int[MAXSIZE];
     if(!L.elem) exit(OVERFLOW);
     L.length=0;
     return OK;
 }
 
-int GetElem(Sqlist L,int i,int &e){
+Status GetElem(Sqlist L,int i,int &e){
     if(i>=L.length||i<0)
-        exit(OVERFLOW);
+        return ERROR;
     else
         e=L.elem[i];
-        return e;
+        return OK;
 }
 
 int main(){
@@ -34,7 +35,7 @@ int main(){
         cin>>list.elem[i];
     int I,E=0;//I为要查询的数在线性表的位置，E为查询到的数
     cin>>I;
-    if(GetElem(list,I,E)==2)
+    if(GetElem(list,I,E))
         cout<<"查询失败";
     else
         cout<<E;
