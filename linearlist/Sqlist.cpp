@@ -21,7 +21,7 @@ Status InitList(Sqlist &L){
 }
 
 Status Inputlist(Sqlist &L,int x){
-    if(x>MAXSIZE)
+    if(x<0||x>MAXSIZE)
         exit(OVERFLOW);
     L.length=x;
     for(int i=0;i<x;i++)
