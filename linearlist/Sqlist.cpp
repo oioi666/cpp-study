@@ -49,12 +49,12 @@ Status ListTraverse(Sqlist L){
         cout<<L.elem[i]<<" ";
     return OK;
 }
-//删除函数
+//插入函数
 Status ListInsert(Sqlist &L,int i,int e){
-    if(i<1||i>L.length) return ERROR;
+    if(i<1||i>L.length+1) return ERROR;
     if(L.length>=MAXSIZE) return ERROR;
-    for(int j=L.length;j>=i-1;j--){
-        L.elem[j]=L.elem[j-1];
+    for(int j=L.length-1;j>=i-1;j--){
+        L.elem[j+1]=L.elem[j];
     }
     L.elem[i-1]=e;
     L.length++;
