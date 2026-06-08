@@ -44,6 +44,12 @@ int LocateElem(Sqlist L,int e){
     return 0;
 }
 
+Status ListTraverse(Sqlist L){
+    for(int i=0;i<L.length;i++)
+        cout<<L.elem[i]<<" ";
+    return OK;
+}
+
 int main(){
     Sqlist list;
     InitList(list);
@@ -65,6 +71,7 @@ int main(){
         return 0;
     }
     else
-        cout<<LocateElem(list,e);
-        
+        cout<<LocateElem(list,e)<<endl;
+    
+    ListTraverse(list);
 }
