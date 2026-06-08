@@ -49,6 +49,17 @@ Status ListTraverse(Sqlist L){
         cout<<L.elem[i]<<" ";
     return OK;
 }
+//删除函数
+Status ListInsert(Sqlist &L,int i,int e){
+    if(i<1||i>L.length) return ERROR;
+    if(L.length>=MAXSIZE) return ERROR;
+    for(int j=L.length;j>=i-1;j--){
+        L.elem[j]=L.elem[j-1];
+    }
+    L.elem[i-1]=e;
+    L.length++;
+    return OK;
+}
 
 int main(){
     Sqlist list;
@@ -61,17 +72,19 @@ int main(){
     int I,E=0,e;//I为要查询的数在线性表的位置，E为查询到的数
     /*cin>>I;
     if(!GetElem(list,I,E))
-        cout<<"查询失败"<<endl;
+        cout<<"查询失败"<<endl;//按下标查找值
     else
         cout<<E;
     */
-    cin>>e;
+    cin>>I>>e;
+    /*
     if(!LocateElem(list,e)){
         cout<<"没有查询到";
         return 0;
     }
     else
-        cout<<LocateElem(list,e)<<endl;
-    
+        cout<<LocateElem(list,e)<<endl;//按值查找下标
+    */
+    ListInsert(list,I,e);
     ListTraverse(list);
 }
