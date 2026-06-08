@@ -13,10 +13,19 @@ typedef struct {
     int length;
 }Sqlist;
 
-Status InitList(Sqlist &L,int x){
+Status InitList(Sqlist &L){
     L.elem=new int[MAXSIZE];
     if(!L.elem) exit(OVERFLOW);
+    L.length=0;
+    return OK;
+}
+
+Status Inputlist(Sqlist &L,int x){
+    if(x>MAXSIZE)
+        exit(OVERFLOW);
     L.length=x;
+    for(int i=0;i<x;i++)
+        cin>>L.elem[i];
     return OK;
 }
 
@@ -29,12 +38,10 @@ Status GetElem(Sqlist L,int i,int &e){
 
 int main(){
     Sqlist list;
-    int n;
-    //输入列表所含的元素个数
-    cin>>n;
-    InitList(list,n);//初始化
-    for(int i=0;i<n;i++)
-        cin>>list.elem[i];
+    InitList(list);//初始化
+    int n;  cin>>n;
+    Inputlist(list,n);
+    
     int I,E=0;//I为要查询的数在线性表的位置，E为查询到的数
     cin>>I;
     if(!GetElem(list,I,E))
