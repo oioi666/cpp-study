@@ -22,7 +22,7 @@ Status InitList(Sqlist &L){
 
 Status Inputlist(Sqlist &L,int x){
     if(x<0||x>MAXSIZE)
-        exit(OVERFLOW);
+        return ERROR;
     L.length=x;
     for(int i=0;i<x;i++)
         cin>>L.elem[i];
@@ -38,10 +38,12 @@ Status GetElem(Sqlist L,int i,int &e){
 
 int main(){
     Sqlist list;
-    InitList(list);//初始化
+    InitList(list);
     int n;  cin>>n;
-    Inputlist(list,n);
-    
+    if(!Inputlist(list,n)){
+        cout<<"数据长度输入不合法";
+        return 0;
+    }
     int I,E=0;//I为要查询的数在线性表的位置，E为查询到的数
     cin>>I;
     if(!GetElem(list,I,E))
