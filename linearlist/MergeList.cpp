@@ -34,7 +34,7 @@ Status LocateElem(Sqlist L,int e){
 }
 
 Status InserList(Sqlist &L,int i,int e){
-    if(i<1||i>L.length) return ERROR;
+    if(i<1||i>L.length+1) return ERROR;
     if(L.length>=MAXSIZA) return ERROR;
     for(int j=L.length-1;j>=i-1;j--){
         L.elem[j+1]=L.elem[j];
@@ -46,7 +46,7 @@ Status InserList(Sqlist &L,int i,int e){
 Status Mergelist(Sqlist &L,Sqlist &K){
     for(int i=0;i<K.length;i++){
         if(!LocateElem(L,K.elem[i]))
-            InserList(L,L.length,K.elem[i]);
+            InserList(L,L.length+1,K.elem[i]);
     }
     return OK;
 }
