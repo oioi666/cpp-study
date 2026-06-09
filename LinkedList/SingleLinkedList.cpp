@@ -24,11 +24,9 @@ void CreateList(LinkList &L,int n){
 }
 //用尾插法创建链表
 void CreateList_R(LinkList &L,int n){
-    LNode *p=new LNode;
-    cin>>p->data;
-    p->next=L->next;
-    L->next=p;
-    for(int i=1;i<n;i++){
+    LNode *p;
+    p=L;
+    for(int i=0;i<n;i++){
         LNode *q=new LNode;
         cin>>q->data;
         q->next=p->next;
