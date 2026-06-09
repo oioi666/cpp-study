@@ -22,6 +22,20 @@ void CreateList(LinkList &L,int n){
         L->next=p;
     }
 }
+//用尾插法创建链表
+void CreateList_R(LinkList &L,int n){
+    LNode *p=new LNode;
+    cin>>p->data;
+    p->next=L->next;
+    L->next=p;
+    for(int i=1;i<n;i++){
+        LNode *q=new LNode;
+        cin>>q->data;
+        q->next=p->next;
+        p->next=q;
+        p=p->next;
+    }
+}
 //输出链表里面的数据
 void Traverse(LinkList L){
     LNode *p;
@@ -37,6 +51,7 @@ int main(){
     if(InitList(l)) cout<<"初始化正常";
     int n;
     cin>>n;
-    CreateList(l,n);
+    //CreateList(l,n);
+    CreateList_R(l,n);
     Traverse(l);
 }
