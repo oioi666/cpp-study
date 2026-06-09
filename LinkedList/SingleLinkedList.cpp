@@ -34,6 +34,18 @@ void CreateList_R(LinkList &L,int n){
         p=p->next;
     }
 }
+//插入函数
+void ListInsert(LinkList &L,int i,int e){
+    LNode *s=new LNode;
+    LNode *p;
+    s->data=e;
+    p=L;
+    for(int j=0;j<i-1;j++){
+        p=p->next;
+    }
+    s->next=p->next;
+    p->next=s;
+}
 //输出链表里面的数据
 void Traverse(LinkList L){
     LNode *p;
@@ -47,9 +59,11 @@ void Traverse(LinkList L){
 int main(){
     LinkList l;
     if(InitList(l)) cout<<"初始化正常";
-    int n;
+    int n,I,E;
     cin>>n;
     //CreateList(l,n);
     CreateList_R(l,n);
+    cin>>I>>E;
+    ListInsert(l,I,E);
     Traverse(l);
 }
