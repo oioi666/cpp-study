@@ -1,5 +1,6 @@
 #include<iostream>
 #define OK 1
+#define ERROR 0
 using namespace std;
 
 typedef int Status;
@@ -60,6 +61,19 @@ void ListDelete(LinkList &L,int i){
     delete q;//删除数据后，记得释放空间
 
 }
+//取值
+int GetElem(LinkList L,int i){
+    LNode *p;
+    p=L;
+    int j=0;
+    while(p->next&&j<i-1){
+        p=p->next;
+        ++j;
+    }
+    if(!p->next||j>i-1) return ERROR;
+    p=p->next;
+    return p->data;
+}
 //输出链表里面的数据
 void Traverse(LinkList L){
     LNode *p;
@@ -82,7 +96,11 @@ int main(){
     ListInsert(l,I,E);
     插入数据
     */
+   /*
     cin>>I;
     ListDelete(l,I);
+    */
+    cin>>I;
     Traverse(l);
+    cout<<"在第I个位置的数是"<<GetElem(l,I);
 }
