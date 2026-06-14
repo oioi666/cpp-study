@@ -37,6 +37,16 @@ void TraverseList(LinkList L){
         p=p->next;
     }
 }
+//创建循环链表
+void CircularList(LinkList &L){
+    LNode *p;
+    p=L;
+    while(p->next){
+        p=p->next;
+    }
+    p->next=L;
+
+}
 
 int main(){
     LinkList l;
@@ -44,6 +54,7 @@ int main(){
     int n;
     cin>>n;
     CreateList(l,n);
+    CircularList(l);
     TraverseList(l);
 }
 
