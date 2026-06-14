@@ -50,8 +50,10 @@ void ListInsert(LinkList &L,int i,int e){
 void ListDelete(LinkList &L,int i){
     LNode *p,*q;
     p=L;
-    for(int j=0;j<i-1;j++){
+    int j=0;
+    while(p->next&&j<i-1){
         p=p->next;
+        ++j;
     }
     q=p->next;
     p->next=q->next;
