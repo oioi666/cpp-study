@@ -17,13 +17,10 @@ Status InitList(LinkList &L){
 //创建
 void CreateList(LinkList &L,int m){
     LNode *p=new LNode;
-    LNode *q;
-    cin>>p->data;
-    L->next=p;
-    p->next=NULL;
-    int j=1;
+    p=L;
+    int j=0;
     while(j<=m-1){
-        q=new LNode;
+       LNode *q=new LNode;
         cin>>q->data;
         q->next=p->next;
         p->next=q;
