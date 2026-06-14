@@ -32,7 +32,7 @@ void CreateList(LinkList &L,int m){
 void TraverseList(LinkList L){
     LNode *p;
     p=L->next;
-    while(p->data){
+    while(p!=L){
         cout<<p->data<<" ";
         p=p->next;
     }
@@ -51,7 +51,6 @@ void CircularList(LinkList &L){
 int main(){
     LinkList l;
     InitList(l);
-    l->data=NULL;
     int n;
     cin>>n;
     CreateList(l,n);
