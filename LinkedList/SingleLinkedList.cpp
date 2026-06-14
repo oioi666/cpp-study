@@ -48,12 +48,14 @@ void ListInsert(LinkList &L,int i,int e){
 }
 //删除链表的数据
 void ListDelete(LinkList &L,int i){
-    LNode *p;
+    LNode *p,*q;
     p=L;
     for(int j=0;j<i-1;j++){
         p=p->next;
     }
-    p->next=p->next->next;
+    q=p->next;
+    p->next=q->next;
+    delete q;//删除数据后，记得释放空间
 
 }
 //输出链表里面的数据
