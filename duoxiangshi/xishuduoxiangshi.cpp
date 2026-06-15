@@ -25,10 +25,6 @@ void CreateSqList(LinkList &L,int m){
     }
 }
 
-void AddSqList(LinkList &l1,LinkList &l2){
-
-}
-
 void TraverseSqList(LinkList L){
     LNode *p;
     p=L->next;
@@ -38,13 +34,72 @@ void TraverseSqList(LinkList L){
     }
 }
 
+void AddSqList(LinkList &l1,LinkList &l2){
+    LNode *p,*q,*l;
+    p=l1->next;
+    q=l2->next;
+    InitSqList(l);
+    while(p&&q){
+        LNode *r=new LNode;
+        LNode *I;
+        I=l;
+        if(p->a==q->a){
+            if(p->b+q->b==0){
+                p=p->next;
+                q=q->next;
+            }
+            r->a=p->a;
+            r->b=p->b+q->b;
+            r->next=I->next;
+            I->next=r;
+            I=I->next;
+            p=p->next;
+            q=q->next;
+        }
+        else{
+            if(p->a<q->a){
+                r->a=p->a;
+                r->b=p->b;
+                r->next=I->next;
+                I->next=r;
+                I=I->next;
+                p=p->next;
+            }
+            else{
+                r->a=q->a;
+                r->b=q->b;
+                r->next=I->next;
+                I->next=r;
+                I=I->next;
+                q=q->next;
+            }
+        }
+    }
+    if(p){
+        LNode *i;
+        i=l;
+        while(i->next)
+            i=i->next;
+        i->next=p;
+    }
+    if(q){
+        LNode *i;
+        i=l;
+        while(i->next)
+            i=i->next;
+        i->next=q;
+    }
+    TraverseSqList(l);
+}
+
+
 int main(){
     LinkList L1,L2;
     InitSqList(L1);
-    //InitSqList(L2);
+    InitSqList(L2);
     int n1,n2;
-    cin>>n1;//>>n2;
+    cin>>n1>>n2;
     CreateSqList(L1,n1);
-    //CreateSqList(L2,n2);
-    TraverseSqList(L1);
+    CreateSqList(L2,n2);
+    AddSqList(L1,L2);
 }
