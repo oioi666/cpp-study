@@ -40,10 +40,11 @@ void AddSqList(LinkList &l1,LinkList &l2){
     p=l1->next;
     q=l2->next;
     InitSqList(l);
+    LNode *I;
+    I=l;
     while(p&&q){
         LNode *r=new LNode;
-        LNode *I;
-        I=l;
+        
         if(p->a==q->a){
             if(p->b+q->b==0){
                 p=p->next;
