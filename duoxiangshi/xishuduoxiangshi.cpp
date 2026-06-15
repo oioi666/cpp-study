@@ -28,6 +28,7 @@ void CreateSqList(LinkList &L,int m){
 void TraverseSqList(LinkList L){
     LNode *p;
     p=L->next;
+    cout<<"所得结果的指数和系数分别是"<<endl;
     while(p){
         cout<<p->a<<" "<<p->b<<endl;
         p=p->next;
@@ -48,13 +49,15 @@ void AddSqList(LinkList &l1,LinkList &l2){
                 p=p->next;
                 q=q->next;
             }
-            r->a=p->a;
-            r->b=p->b+q->b;
-            r->next=I->next;
-            I->next=r;
-            I=I->next;
-            p=p->next;
-            q=q->next;
+            else{
+                r->a=p->a;
+                r->b=p->b+q->b;
+                r->next=I->next;
+                I->next=r;
+                I=I->next;
+                p=p->next;
+                q=q->next;
+            }
         }
         else{
             if(p->a<q->a){
@@ -99,7 +102,9 @@ int main(){
     InitSqList(L2);
     int n1,n2;
     cin>>n1>>n2;
+    cout<<"第一个多项式的指数和系数"<<endl;
     CreateSqList(L1,n1);
+    cout<<"第二个多项式的指数和系数"<<endl;
     CreateSqList(L2,n2);
     AddSqList(L1,L2);
 }
