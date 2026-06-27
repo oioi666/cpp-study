@@ -2,8 +2,8 @@
 using namespace std;
 
 typedef struct SqList{
-    float a;
-    int b;
+    int a;
+    float b;
     struct SqList *next;
 }LNode,*LinkList;
 
@@ -102,6 +102,7 @@ int main(){
     InitSqList(L1);
     InitSqList(L2);
     int n1,n2;
+    cout<<"输入两个多项式的长度"<<endl;
     cin>>n1>>n2;
     cout<<"第一个多项式的指数和系数"<<endl;
     CreateSqList(L1,n1);
